@@ -1,6 +1,7 @@
 import pygame
 import random
 from bubble_sort import bubble_sort
+from insertion_sort import insertion_sort
 from quick_sort import quick_sort
 from merge_sort import merge_sort
 from heap_sort import heap_sort
@@ -34,14 +35,17 @@ class Visualiser():
         bubble_sort_text = myFont.render('Bubble Sort',1,(0,0,0)) 
         self.screen.blit(bubble_sort_text,(5,5))
 
+        insertion_sort_text = myFont.render('Insertion Sort',1,(0,0,0)) 
+        self.screen.blit(insertion_sort_text,(5,55))
+
         quick_sort_text = myFont.render('Quick Sort',1,(0,0,0)) 
-        self.screen.blit(quick_sort_text,(5,55))
+        self.screen.blit(quick_sort_text,(5,105))
 
         merge_sort_text = myFont.render('Merge Sort',1,(0,0,0)) 
-        self.screen.blit(merge_sort_text,(5,105))
+        self.screen.blit(merge_sort_text,(5,155))
 
         heap_sort_text = myFont.render('Heap Sort',1,(0,0,0)) 
-        self.screen.blit(heap_sort_text,(5,155))
+        self.screen.blit(heap_sort_text,(5,205))
 
         shuffle_text = myFont.render('Shuffle',1,(0,0,0)) 
         self.screen.blit(shuffle_text,(5,750))
@@ -85,12 +89,14 @@ class Visualiser():
 
                 if  x <= 200 and y <= 50: #Bubble sort button
                     bubble_sort(self.array, self.red, self.update_screen)
-                elif x <= 200 and y >= 50 and y <= 100: #Quick sort button
+                elif x <= 200 and y >= 50 and y <= 100: #Insertion sort button
+                    insertion_sort(self.array, self.red, self.update_screen)
+                elif x <= 200 and y >= 100 and y <= 150: #Quick sort button
                     quick_sort(self.array, 0, len(self.array)-1, self.red, self.update_screen)
-                elif x <= 200 and y >= 100 and y <= 150: #Merge sort button
+                elif x <= 200 and y >= 150 and y <= 200: #Merge sort button
                     array_copy = self.array[:]
                     merge_sort(array_copy, self.red, self.update_screen, self.array)
-                elif x <= 200 and y >= 150 and y <= 200: #Heap sort button
+                elif x <= 200 and y >= 200 and y <= 250: #Heap sort button
                     heap_sort(self.array, self.red, self.update_screen)
                 elif x <= 200 and y >= 750: #Shuffle button
                     self.create_array()
